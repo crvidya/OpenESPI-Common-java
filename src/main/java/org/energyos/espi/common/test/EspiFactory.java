@@ -340,21 +340,31 @@ public class EspiFactory {
         return thirdParty;
     }
 
+    public static ApplicationInformation newApplicationInformation() {
+        ApplicationInformation applicationInformation = new ApplicationInformation();
+        applicationInformation.setUUID(UUID.randomUUID());
+        applicationInformation.setThirdPartyApplicationName("Name" + UUID.randomUUID().toString());
+        applicationInformation.setDataCustodianThirdPartyId("ClientId" + UUID.randomUUID().toString());
+        applicationInformation.setThirdPartyDefaultNotifyResource("http://example.com:8080/ThirdParty/espi/1_1/Notification");
+
+        return applicationInformation;
+    }
+
     public static Subscription newSubscription() {
         Subscription subscription = new Subscription();
         subscription.setUUID(UUID.randomUUID());
         subscription.setHashedId(UUID.randomUUID().toString());
         subscription.setRetailCustomer(newRetailCustomer());
-        subscription.setThirdParty(newThirdParty());
+        subscription.setApplicationInformation(newApplicationInformation());
 
         return subscription;
     }
 
-    public static Subscription newSubscription(RetailCustomer retailCustomer, ThirdParty thirdParty) {
+    public static Subscription newSubscription(RetailCustomer retailCustomer, ApplicationInformation applicationInformation) {
         Subscription subscription = new Subscription();
         subscription.setUUID(UUID.randomUUID());
         subscription.setRetailCustomer(retailCustomer);
-        subscription.setThirdParty(thirdParty);
+        subscription.setApplicationInformation(applicationInformation);
 
         return subscription;
     }
@@ -363,7 +373,7 @@ public class EspiFactory {
         Subscription subscription = new Subscription();
         subscription.setUUID(UUID.randomUUID());
         subscription.setRetailCustomer(retailCustomer);
-        subscription.setThirdParty(newThirdParty());
+        subscription.setApplicationInformation(newApplicationInformation());
 
         return subscription;
     }
