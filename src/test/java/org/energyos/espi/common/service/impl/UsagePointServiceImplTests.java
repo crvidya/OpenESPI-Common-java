@@ -192,4 +192,11 @@ public class UsagePointServiceImplTests {
 
         verify(repository, never()).deleteById(id);
     }
+
+    @Test
+    public void findAllIdsForRetailCustomer() {
+        service.findAllIdsForRetailCustomer(1L);
+
+        verify(repository).findAllIdsForRetailCustomer(1L);
+    }
 }

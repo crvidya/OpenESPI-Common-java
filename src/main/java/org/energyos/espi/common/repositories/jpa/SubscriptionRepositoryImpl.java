@@ -26,6 +26,7 @@ public class SubscriptionRepositoryImpl implements SubscriptionRepository {
     @Override
     public List<Subscription> findAll() {
         return (List<Subscription>)this.em.createNamedQuery(Subscription.QUERY_FIND_ALL).getResultList();
+
     }
 
     @Override
